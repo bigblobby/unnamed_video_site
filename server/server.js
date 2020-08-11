@@ -1,8 +1,18 @@
-const express = require('express');
-const app = express();
+require('dotenv').config();
+const https = require('https');
+const http = require('http');
+const app = require('./app');
+const port = process.env.PORT;
 
-app.get('/api/test', (req, res) => {
-   res.json({message: 'hello world'});
-});
+async function startServer() {
+   try {
+      http.createServer(app).listen(port);
+      https.createServer({}, app).listen(443);
+      console.log(`Listening on port ${port}`)
+   } catch(e) {
+      console.error(e);
+   }
+}
 
-app.listen(8000);
+startServer();
+
