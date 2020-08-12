@@ -4,8 +4,9 @@ const bcrypt = require('bcrypt');
 const name = 'User';
 const tableName = 'users';
 const selectableProps = [
+    'id',
     'username',
-    'email'
+    'email',
 ]
 
 const SALT = 10;
@@ -35,25 +36,25 @@ module.exports = (knex) => {
     };
 
     const verify = (username, password) => {
-        const matchErrorMsg = 'Username or password do not match';
+        const matchErrorMsg = 'Username and password do not match';
 
-        knex.select()
+        return knex.select()
             .from(tableName)
             .where({ username })
             .timeout(guts.timeout)
             .then(user => {
-                if (!user) throw matchErrorMsg;
+                if (user.length === 0) throw matchErrorMsg;
 
-                return user
+                return user[0]
             })
             .then(user => Promise.all([user, verifyPassword(password, user.password)]))
             .then(([user, isMatch]) => {
                 if (!isMatch) throw matchErrorMsg;
 
+                console.log(user);
                 return user
             })
     }
-
 
     return {
         ...guts,
