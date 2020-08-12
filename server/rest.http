@@ -19,5 +19,16 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/api/user/protect
+GET http://localhost:8080/api/auth/protect
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6MTU5NzIzMTM1MiwiZXhwIjoxNTk3MzE3NzUyfQ.dkCbZb8uakLxmUjv5w9_Qb0aOx6ALzygGj64AlTtN6A
+
+###
+
+POST http://localhost:8080/api/post/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6MTU5NzIzNzY1MywiZXhwIjoxNTk3MzI0MDUzfQ.zx4YbLjg25GNQ5xuYhCWZmjf07bUeAqVR5axFqP6Fxo
+Content-Type: application/json
+
+{
+    "title": "A Title",
+    "copy": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus culpa delectus eaque id incidunt neque nobis quam quis ullam vel."
+}
