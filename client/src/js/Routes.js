@@ -23,6 +23,8 @@ const store = createStore(
 );
 
 const Homepage = React.lazy(() => import("./pages/Homepage"));
+const LoginPage = React.lazy(() => import("./pages/LoginPage"));
+const RegisterPage = React.lazy(() => import("./pages/RegisterPage"));
 
 function Routes() {
     return (
@@ -32,6 +34,8 @@ function Routes() {
                     <Suspense fallback={'Loading'}>
                         <Switch>
                             <Route exact path="/" component={Homepage} />
+                            <Route exact path="/login" component={LoginPage} />
+                            <Route exact path="/register" component={RegisterPage} />
                         </Switch>
                     </Suspense>
                 </div>

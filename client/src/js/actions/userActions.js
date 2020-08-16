@@ -1,25 +1,23 @@
 import ApiService from "../services/ApiService";
 import TokenService from "../services/TokenService";
+import {push} from 'connected-react-router';
 
 // Action types
 const userRegisterSuccessAction = (user) => ({
     type: 'REGISTER_SUCCESS',
-    payload: {
-        user: user,
-        error: null
-    }
+    payload: user
 });
 
 const userRegisterFailureAction = (error) => ({
     type: 'REGISTER_FAILURE',
-    payload: {
-        user: null,
-        error: error
-    }
+    payload: error
 });
 
-// Action creators
+const userLoginSuccessAction = () => ({});
 
+const userLoginFailureAction = () => ({});
+
+// Action creators
 export function userRegister(data){
     return (dispatch) => {
         ApiService.registerUser(data)
@@ -27,6 +25,7 @@ export function userRegister(data){
                 console.log(result);
                 dispatch(userRegisterSuccessAction(result.user));
                 TokenService.setToken(result.token);
+                dispatch(push('/'));
             }).catch(err => {
                 console.log(err);
                 dispatch(userRegisterFailureAction(err.error));
@@ -34,6 +33,16 @@ export function userRegister(data){
     }
 }
 
-function userLogin(){
-
+export function userLogin(data, previousUrl = '/'){
+    return (dispatch) => {
+        ApiService.loginUser(data)
+            .then(result => {
+                dispatch(userRegisterSuccessAction(result.user));
+                TokenService.setToken(result.token);
+                dispatch(push(previousUrl));
+            }).catch(err => {
+                console.log(err);
+                dispatch(userRegisterFailureAction(err.error));
+            });
+    }
 }

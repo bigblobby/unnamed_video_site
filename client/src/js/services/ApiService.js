@@ -47,6 +47,11 @@ class ApiService {
         const uri = '/user/register';
         return this.post(uri, data);
     }
+
+    loginUser(data){
+        const uri = '/user/login';
+        return this.post(uri, data);
+    }
 }
 
 export default new ApiService();
