@@ -24,22 +24,20 @@ const store = createStore(
 
 const Homepage = React.lazy(() => import("./pages/Homepage"));
 
-class Routes extends React.Component {
-    render(){
-        return (
-            <Provider store={ store }>
-                <ConnectedRouter history={history}>
-                    <div className="site-content">
-                        <Suspense fallback={'Loading'}>
-                            <Switch>
-                                <Route exact path="/" component={Homepage} />
-                            </Switch>
-                        </Suspense>
-                    </div>
-                </ConnectedRouter>
-            </Provider>
-        )
-    }
+function Routes() {
+    return (
+        <Provider store={ store }>
+            <ConnectedRouter history={history}>
+                <div className="site-content">
+                    <Suspense fallback={'Loading'}>
+                        <Switch>
+                            <Route exact path="/" component={Homepage} />
+                        </Switch>
+                    </Suspense>
+                </div>
+            </ConnectedRouter>
+        </Provider>
+    )
 }
 
 export default Routes;

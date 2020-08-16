@@ -1,8 +1,12 @@
 const userHelper = require('../Helpers/user.helper');
 
-const userSignup = async (req, res) => {
+const userRegister = async (req, res) => {
     const { username, password, email } = req.body;
     const { User } = await require('../Model');
+
+    if(!username && !password) return res.status(500).json({ error: 'You must pick a username and password' });
+    if(!username) return res.status(500).json({ error: 'You must pick a username' });
+    if(!password) return res.status(500).json({ error: 'You must pick a password' });
 
     User.create({
         username,
@@ -41,6 +45,6 @@ const userLogin = async (req, res) => {
 };
 
 module.exports = {
-    userSignup: userSignup,
+    userRegister: userRegister,
     userLogin: userLogin,
 }

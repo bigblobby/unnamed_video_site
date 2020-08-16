@@ -67,6 +67,7 @@ module.exports = (env, argv) => {
         output: {
             filename: '[name].bundle.js',
             path: path.resolve(__dirname, 'dist'),
+            publicPath: '/'
         },
         optimization: {
             concatenateModules: production,
@@ -106,6 +107,7 @@ module.exports = (env, argv) => {
         devServer: {
             contentBase: path.join(__dirname, "dist"),
             compress: true,
+            historyApiFallback: true,
             port: 8080,
             proxy: {
                 '/api': {

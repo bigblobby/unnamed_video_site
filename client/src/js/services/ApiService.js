@@ -42,6 +42,11 @@ class ApiService {
             return this.get('/test');
         })
     }
+
+    registerUser(data){
+        const uri = '/user/register';
+        return this.post(uri, data);
+    }
 }
 
 export default new ApiService();
