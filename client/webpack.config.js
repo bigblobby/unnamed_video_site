@@ -8,7 +8,7 @@ const production = process.env.NODE_ENV === 'production';
 module.exports = (env, argv) => {
     return {
         entry: {
-            app: './src/index.js',
+            app: path.join(__dirname, 'src', 'index.tsx')
         },
         module: {
             rules: [
@@ -55,7 +55,17 @@ module.exports = (env, argv) => {
                         'file-loader',
                     ],
                 },
+                {
+                    test: /\.tsx?$/,
+                    use: {
+                        loader: 'ts-loader'
+                    },
+                    exclude: /node_modules/
+                }
             ]
+        },
+        resolve: {
+            extensions: [ ".ts", ".tsx", ".js", ".jsx" ]
         },
         plugins: [
             new CleanWebpackPlugin(),

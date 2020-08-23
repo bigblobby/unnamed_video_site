@@ -1,6 +1,7 @@
 const initialState = {
     user: null,
-    error: null
+    error: null,
+    authenticated: false
 }
 
 function userReducer(state = initialState, action){
@@ -9,13 +10,15 @@ function userReducer(state = initialState, action){
             return {
                 ...state,
                 error: null,
-                user: action.payload
+                user: action.payload,
+                authenticated: true
             };
         case "REGISTER_FAILURE":
             return {
                 ...state,
                 error: action.payload,
-                user: null
+                user: null,
+                authenticated: false
             };
         default:
             return state;

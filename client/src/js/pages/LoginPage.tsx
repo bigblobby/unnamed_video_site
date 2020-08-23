@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import {userLogin} from "../actions/userActions";
+import { userLogin } from "../actions/userActions";
 
 function LoginPage(props){
     const [ username, setUsername ] = useState('');
