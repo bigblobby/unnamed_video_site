@@ -20,6 +20,20 @@ function userReducer(state = initialState, action){
                 user: null,
                 authenticated: false
             };
+        case "LOGIN_SUCCESS":
+            return {
+                ...state,
+                error: null,
+                user: action.payload,
+                authenticated: true
+            };
+        case "LOGIN_FAILURE":
+            return {
+                ...state,
+                error: action.payload,
+                user: null,
+                authenticated: false
+            };
         default:
             return state;
     }

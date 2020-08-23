@@ -13,9 +13,15 @@ const userRegisterFailureAction = (error) => ({
     payload: error
 });
 
-const userLoginSuccessAction = () => ({});
+const userLoginSuccessAction = (user) => ({
+    type: "LOGIN_SUCCESS",
+    payload: user
+});
 
-const userLoginFailureAction = () => ({});
+const userLoginFailureAction = (error) => ({
+    type: 'LOGIN_FAILURE',
+    payload: error
+});
 
 // Action creators
 export function userRegister(data){
@@ -37,12 +43,12 @@ export function userLogin(data, previousUrl = '/'){
     return (dispatch) => {
         ApiService.loginUser(data)
             .then(result => {
-                dispatch(userRegisterSuccessAction(result.user));
+                dispatch(userLoginSuccessAction(result.user));
                 TokenService.setToken(result.token);
                 dispatch(push(previousUrl));
             }).catch(err => {
                 console.log(err);
-                dispatch(userRegisterFailureAction(err.error));
+                dispatch(userLoginFailureAction(err.error));
             });
     }
 }

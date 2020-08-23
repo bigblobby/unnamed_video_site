@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage component should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      The login page
+    </h1>
+    <form>
+      <label
+        for="username"
+      >
+        Username:
+      </label>
+      <input
+        id="username"
+        name="username"
+        type="text"
+      />
+      <label
+        for="password"
+      >
+        Password:
+      </label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+      />
+      <button
+        type="submit"
+      >
+        submit
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

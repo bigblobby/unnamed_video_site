@@ -51,9 +51,12 @@ module.exports = (knex) => {
             .then(([user, isMatch]) => {
                 if (!isMatch) throw matchErrorMsg;
 
-                console.log(user);
-                return user
-            })
+                return {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email
+                };
+            });
     }
 
     return {
