@@ -52,5 +52,8 @@
         "dev": "yarn start",
         "watch": "yarn start",
         "test": "jest test"
+    },
+    "jest": {
+        "testPathIgnorePatterns": ["<rootDir>/src/js/__tests__/test-utils.js"]
     }
 }

@@ -13,8 +13,6 @@ const middleware = [
     routerMiddleware(history)
 ];
 
-// const store = createStore(rootReducer(history), initialState);
-
 function render(
     ui,
     {
