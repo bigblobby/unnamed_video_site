@@ -41,17 +41,22 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
 
     render(){
         return (
-            <div>
-                <h1>The login page</h1>
+            <div className="login-page">
+                <div className="login-container">
+                    <h1>Login</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="username">Email Address *</label>
+                            <input className="form-control" type="email" name="username" id="username" onChange={ this.handleChange }/>
+                        </div>
+                        <div className="form-group mb-4">
+                            <label htmlFor="password">Password *</label>
+                            <input className="form-control" type="password" name="password" id="password" onChange={ this.handleChange }/>
+                        </div>
 
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" name="username" id="username" onChange={ this.handleChange }/>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" id="password" onChange={ this.handleChange }/>
-
-                    <button type="submit">submit</button>
-                </form>
+                        <button className="btn btn-primary w-100" type="submit">Login</button>
+                    </form>
+                </div>
             </div>
         )
     }

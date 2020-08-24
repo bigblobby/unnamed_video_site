@@ -7,6 +7,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import rootReducer from "./reducers";
 import history from "./history";
+import Header from "./components/Header";
 
 const middleware = [
     thunk,
@@ -31,6 +32,9 @@ function Routes() {
         <Provider store={ store }>
             <ConnectedRouter history={history}>
                 <div className="site-content">
+
+                    <Header />
+
                     <Suspense fallback={'Loading'}>
                         <Switch>
                             <Route exact path="/" component={Homepage} />

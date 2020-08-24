@@ -11,7 +11,7 @@
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
-@import "~bootstrap/scss/buttons";
+//@import "~bootstrap/scss/buttons";
 
 //@import "~bootstrap/scss/nav";
 //@import "~bootstrap/scss/navbar";
@@ -45,3 +45,15 @@
 //@import "~bootstrap/scss/carousel";
 //@import "~bootstrap/scss/spinners";
 //@import "~bootstrap/scss/print";
+
+// Global
+@import "global/colors";
+@import "global/base";
+@import "global/breakpoints";
+
+// Pages
+@import "pages/login-page";
+
+// Components
+@import "components/header";
+@import "components/button";
