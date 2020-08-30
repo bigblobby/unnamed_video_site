@@ -17,9 +17,18 @@
         outline-color: rgba($punch, 0.5);
         box-shadow: 0 0 0 0.2rem rgba($punch, 0.5);
     }
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .btn-primary {
     background-color: $punch;
     color: $white;
+
+    &:hover {
+        background-color: darken($punch, 10);
+        color: $white;
+    }
 }

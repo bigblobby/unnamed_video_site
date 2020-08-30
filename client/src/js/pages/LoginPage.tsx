@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { userLogin } from "../actions/userActions";
 
 type LoginPageState = {
@@ -37,7 +37,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         this.setState({
             [e.target.name]: e.target.value
         } as { [K in keyof LoginPageState]: LoginPageState[K] } );
-    }
+    };
 
     render(){
         return (

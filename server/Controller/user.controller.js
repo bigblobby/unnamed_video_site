@@ -39,6 +39,7 @@ const userLogin = async (req, res) => {
 
         res.status(200).json({user: user, token: token, message: 'success'})
     } catch(e) {
+        console.log(e);
         const errorMessage = 'Your username or password is incorrect';
         return res.status(500).json({ error: errorMessage });
     }
