@@ -1,4 +1,5 @@
 import axios from 'axios';
+import TokenService from "./TokenService";
 
 const instance = axios.create({
     baseURL: '/api'
@@ -43,6 +44,16 @@ class ApiService {
         })
     }
 
+    verifyToken(){
+        const token = TokenService.getToken();
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+
+        const uri = '/auth/protect';
+        return this.post(uri, {}, config);
+    }
+
     registerUser(data){
         const uri = '/user/register';
         return this.post(uri, data);
@@ -51,6 +62,16 @@ class ApiService {
     loginUser(data){
         const uri = '/user/login';
         return this.post(uri, data);
+    }
+
+    createPost(data){
+        const token = TokenService.getToken();
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+
+        const uri = '/post/create';
+        return this.post(uri, data, config);
     }
 }
 

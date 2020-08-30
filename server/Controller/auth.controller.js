@@ -4,6 +4,8 @@ const protect = async (req, res) => {
     try {
         const user = await User.findOne({id: req.tokenData.id});
 
+        console.log(user);
+
         if(user) {
             res.status(200).json({ user: user, authenticated: true });
         } else {

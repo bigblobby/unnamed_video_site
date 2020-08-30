@@ -13,7 +13,7 @@ POST http://localhost:8080/api/user/login
 Content-Type: application/json
 
 {
-    "username": "tom",
+    "username": "tdempster",
     "password": "test"
 }
 
@@ -25,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6M
 ###
 
 POST http://localhost:8080/api/post/create
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6MTU5NzIzNzY1MywiZXhwIjoxNTk3MzI0MDUzfQ.zx4YbLjg25GNQ5xuYhCWZmjf07bUeAqVR5axFqP6Fxo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk4NzgwNDQ5LCJleHAiOjE1OTg4NjY4NDl9.8-1a1LvieSHc_PEp1eCRgks6E2XFqwsxDd7oN71AkD0
 Content-Type: application/json
 
 {

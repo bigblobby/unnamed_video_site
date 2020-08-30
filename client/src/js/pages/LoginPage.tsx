@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { userLogin } from "../actions/userActions";
+import { Redirect } from 'react-router-dom';
 
 type LoginPageState = {
     username: string;
     password: string;
-    previousUrl: string;
 }
 
 type LoginPageProps = {
-    userLogin: (user, url) => {}
+    user: {};
+    location: { state: { from } };
+    userLogin: (user, url) => {};
+    prevUrl: string;
 }
-
 
 class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     constructor(props) {
@@ -19,18 +21,19 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
 
         this.state = {
             username: '',
-            password: '',
-            previousUrl: props.location?.state?.from.pathname
+            password: ''
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
 
+        console.log(this.props);
+
         this.props.userLogin({
             username: this.state.username,
             password: this.state.password
-        }, this.state.previousUrl)
+        }, this.props.prevUrl);
     };
 
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,8 +49,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
                     <h1>Login</h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="username">Email Address *</label>
-                            <input className="form-control" type="email" name="username" id="username" onChange={ this.handleChange }/>
+                            <label htmlFor="username">Username *</label>
+                            <input className="form-control" type="text" name="username" id="username" onChange={ this.handleChange }/>
                         </div>
                         <div className="form-group mb-4">
                             <label htmlFor="password">Password *</label>
@@ -63,10 +66,11 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
 }
 
 const mapStateToProps = ({userReducer}) => {
-    const {user, error} = userReducer;
+    const {user, error, prevUrl} = userReducer;
     return {
         user,
-        error
+        error,
+        prevUrl
     }
 };
 

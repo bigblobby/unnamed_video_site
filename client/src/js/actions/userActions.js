@@ -52,3 +52,28 @@ export function userLogin(data, previousUrl = '/'){
             });
     }
 }
+
+export function verifyToken(){
+    return async (dispatch) => {
+        if(!TokenService.getToken()){
+            dispatch(userLoginFailureAction('Token not valid'));
+        }
+
+        try {
+            const user = await ApiService.verifyToken();
+            dispatch(userLoginSuccessAction(user));
+            console.log('success');
+        } catch(e) {
+            console.log('fail');
+            dispatch(userLoginFailureAction('Could not verify token'));
+            TokenService.removeToken();
+            dispatch(push('/login'));
+        }
+    }
+}
+
+export function setPrevUrl(url){
+    return (dispatch) => {
+        dispatch({type: "CHANGE_PREV_LOCATION", payload: url });
+    }
+}

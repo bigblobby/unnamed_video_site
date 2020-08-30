@@ -2,6 +2,9 @@ const create = async (req, res) => {
     const {Post} = await require('../Model');
     const {title, copy} = req.body;
 
+    if(!title) return res.status(500).json({error: 'You must provide a title'});
+    if(!copy) return res.status(500).json({error: 'You must provide copy'});
+
     Post.create({
         user_id: req.tokenData.id,
         title: title,

@@ -27,10 +27,10 @@ class Header extends React.Component {
 
                         <div className="user-actions">
                             <div>
-                                <Link className="login" exact to={"/login"}>Login</Link>
+                                <Link className="login" to={"/login"}>Login</Link>
                             </div>
                             <div>
-                                <Link className="btn btn-primary sign-up" exact to={"/register"}>Sign Up</Link>
+                                <Link className="btn btn-primary sign-up" to={"/register"}>Sign Up</Link>
                             </div>
                         </div>
                     </div>

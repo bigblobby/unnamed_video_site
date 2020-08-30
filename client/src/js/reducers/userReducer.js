@@ -1,7 +1,8 @@
 const initialState = {
     user: null,
     error: null,
-    authenticated: false
+    authenticated: false,
+    prevUrl: ''
 }
 
 function userReducer(state = initialState, action){
@@ -34,6 +35,11 @@ function userReducer(state = initialState, action){
                 user: null,
                 authenticated: false
             };
+        case "CHANGE_PREV_LOCATION":
+           return {
+               ...state,
+               prevUrl: action.payload
+           }
         default:
             return state;
     }

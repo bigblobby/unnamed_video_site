@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ApiService from "../services/ApiService";
+import { connect } from 'react-redux';
+import {verifyToken} from "../actions/userActions";
 
 function Homepage(props) {
     const callTest = () => {
-        ApiService.getTest()
-            .then(result => console.log(result));
+        props.verifyToken();
     };
 
     return (
@@ -15,4 +15,6 @@ function Homepage(props) {
     )
 }
 
-export default Homepage;
+const mapDispatchToProps = { verifyToken };
+
+export default connect(null, mapDispatchToProps)(Homepage);

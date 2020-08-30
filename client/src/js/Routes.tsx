@@ -8,6 +8,10 @@ import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import rootReducer from "./reducers";
 import history from "./history";
 import Header from "./components/Header";
+import PrivateRoute from "./containers/PrivateRoute";
+import PublicRoute from "./containers/PublicRoute";
+import GuestRoute from "./containers/GuestRoute";
+
 
 const middleware = [
     thunk,
@@ -26,20 +30,23 @@ const store = createStore(
 const Homepage = React.lazy(() => import("./pages/Homepage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const RegisterPage = React.lazy(() => import("./pages/RegisterPage"));
+const PostCreatePage = React.lazy(() => import("./pages/PostCreatePage"));
+const PostListPage = React.lazy(() => import("./pages/PostListPage"));
 
 function Routes() {
     return (
         <Provider store={ store }>
             <ConnectedRouter history={history}>
                 <div className="site-content">
-
                     <Header />
 
                     <Suspense fallback={'Loading'}>
                         <Switch>
                             <Route exact path="/" component={Homepage} />
-                            <Route exact path="/login" component={LoginPage} />
-                            <Route exact path="/register" component={RegisterPage} />
+                            <GuestRoute exact path="/login" component={LoginPage} />
+                            <GuestRoute exact path="/register" component={RegisterPage} />
+                            <PrivateRoute exact path="/post-create" component={PostCreatePage} />
+                            <PublicRoute exact path="/posts" component={PostListPage} />
                         </Switch>
                     </Suspense>
                 </div>
