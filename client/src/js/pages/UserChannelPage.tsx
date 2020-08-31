@@ -5,16 +5,32 @@ type UserChannelPageProps = {
     match: {params}
 }
 
-class UserChannelPage extends React.Component<UserChannelPageProps, {}> {
+type UserChannelPageState = {
+    id: string;
+    username: string;
+    email: string;
+}
+
+class UserChannelPage extends React.Component<UserChannelPageProps, UserChannelPageState> {
     constructor(props) {
         super(props);
+
+        this.state = {
+            id: '',
+            username: '',
+            email: ''
+        }
     }
 
     componentDidMount() {
         Api.getUserChannel({
             username: this.props.match.params.username
         }).then(result => {
-            console.log(result);
+            this.setState({
+                id: result.user.id,
+                username: result.user.username,
+                email: result.user.email
+            });
         }).catch(err => {
             console.log(err);
         });
@@ -23,7 +39,10 @@ class UserChannelPage extends React.Component<UserChannelPageProps, {}> {
     render() {
         return (
             <div>
-                User chanel
+                <h1>Channel</h1>
+                <p>ID: {this.state.id}</p>
+                <p>Username: {this.state.username}</p>
+                <p>Email: {this.state.email}</p>
             </div>
         );
     }

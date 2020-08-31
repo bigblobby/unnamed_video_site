@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Api from '../services/ApiService';
 
 interface Post {
@@ -44,7 +45,7 @@ class PostListPage extends React.Component<{}, PostListPageState> {
                             return (
                                 <div className="post">
                                     <h2>{post.title}</h2>
-                                    <h5>By {post.author} at {post.created_at}</h5>
+                                    <h5>By <Link to={`/user/channel/${post.author}`}>{post.author}</Link> at {post.created_at}</h5>
                                     <p>{post.copy}</p>
                                 </div>
                             )

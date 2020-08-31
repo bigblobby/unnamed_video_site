@@ -6,15 +6,17 @@ import { verifyToken } from "../actions/userActions";
 
 type GuestRouteProps = {
     verifyToken: () => {},
-    setPrevUrl: (url) => {};
-    location: {pathname},
+    location: {},
     user: {},
     component: Element
+    verify: boolean
 }
 
 class GuestRoute extends React.Component<GuestRouteProps, {}> {
     componentDidMount() {
-        this.props.verifyToken();
+        if(this.props.verify){
+            this.props.verifyToken();
+        }
     }
 
     render() {

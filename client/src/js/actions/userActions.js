@@ -62,9 +62,7 @@ export function verifyToken(){
         try {
             const user = await ApiService.verifyToken();
             dispatch(userLoginSuccessAction(user));
-            console.log('success');
         } catch(e) {
-            console.log('fail');
             dispatch(userLoginFailureAction('Could not verify token'));
             TokenService.removeToken();
             dispatch(push('/login'));

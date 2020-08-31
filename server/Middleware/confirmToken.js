@@ -1,4 +1,4 @@
-const userHelper = require('../Helpers/user.helper');
+const authHelper = require('../Helpers/auth.helper');
 
 const confirmToken = async(req, res, next) =>{
     if(!req.headers.authorization) {
@@ -9,7 +9,7 @@ const confirmToken = async(req, res, next) =>{
 
     if(token) {
         try {
-            req.tokenData = await userHelper.verifyToken(token);
+            req.tokenData = await authHelper.verifyToken(token);
             next();
         } catch(e) {
             res.status(401).json({ message: 'Invalid token or token expired', authenticated: false });

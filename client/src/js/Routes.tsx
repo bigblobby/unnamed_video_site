@@ -44,7 +44,7 @@ function Routes() {
                     <Suspense fallback={'Loading'}>
                         <Switch>
                             <Route exact path="/" component={Homepage} />
-                            <GuestRoute exact path="/login" component={LoginPage} />
+                            <GuestRoute exact path="/login" verify component={LoginPage} />
                             <GuestRoute exact path="/register" component={RegisterPage} />
                             <PrivateRoute exact path="/post-create" component={PostCreatePage} />
                             <Route exact path="/posts" component={PostListPage} />

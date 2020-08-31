@@ -37,13 +37,6 @@ class ApiService {
         });
     }
 
-    getTest(){
-        const uri = '/test';
-        return this.getCached(uri, () => {
-            return this.get('/test');
-        })
-    }
-
     verifyToken(){
         const token = TokenService.getToken();
         const config = {
@@ -55,12 +48,12 @@ class ApiService {
     }
 
     registerUser(data){
-        const uri = '/user/register';
+        const uri = '/auth/register';
         return this.post(uri, data);
     }
 
     loginUser(data){
-        const uri = '/user/login';
+        const uri = '/auth/login';
         return this.post(uri, data);
     }
 
