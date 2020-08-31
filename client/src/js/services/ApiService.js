@@ -73,6 +73,16 @@ class ApiService {
         const uri = '/post/create';
         return this.post(uri, data, config);
     }
+
+    getAllPosts(){
+        const uri = '/post/all';
+        return this.get(uri);
+    }
+
+    getUserChannel(params){
+        const uri = '/user/channel';
+        return this.post(uri, params);
+    }
 }
 
 export default new ApiService();

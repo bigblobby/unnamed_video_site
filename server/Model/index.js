@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const knex = require('../Config/database')
+const fs = require('fs');
+const path = require('path');
+const knex = require('../Config/database');
 
 const getModelFiles = (dir) => {
     return new Promise((resolve, reject) => {

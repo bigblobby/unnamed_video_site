@@ -17,12 +17,19 @@ module.exports = (knex) => {
         selectableProps
     });
 
+    function findAll(){
+        return knex('posts')
+            .join('users', 'posts.user_id', '=', 'users.id')
+            .select('posts.title', 'posts.copy', 'posts.created_at', 'users.username as author');
+    }
+
     function findAllByUserId(id){
         //return knex.
     }
 
     return {
         ...guts,
+        findAll,
         findAllByUserId
     }
 }

@@ -32,6 +32,7 @@ const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const RegisterPage = React.lazy(() => import("./pages/RegisterPage"));
 const PostCreatePage = React.lazy(() => import("./pages/PostCreatePage"));
 const PostListPage = React.lazy(() => import("./pages/PostListPage"));
+const UserChannelPage = React.lazy(() => import("./pages/UserChannelPage"));
 
 function Routes() {
     return (
@@ -46,7 +47,8 @@ function Routes() {
                             <GuestRoute exact path="/login" component={LoginPage} />
                             <GuestRoute exact path="/register" component={RegisterPage} />
                             <PrivateRoute exact path="/post-create" component={PostCreatePage} />
-                            <PublicRoute exact path="/posts" component={PostListPage} />
+                            <Route exact path="/posts" component={PostListPage} />
+                            <Route exact path="/user/channel/:username" component={UserChannelPage} />
                         </Switch>
                     </Suspense>
                 </div>

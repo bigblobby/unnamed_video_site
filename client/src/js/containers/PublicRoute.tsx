@@ -12,7 +12,6 @@ type PublicRouteProps = {
 
 class PublicRoute extends React.Component<PublicRouteProps, {}> {
     componentDidMount() {
-        this.props.verifyToken();
         this.props.setPrevUrl(this.props.location.pathname);
     }
 

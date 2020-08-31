@@ -23,6 +23,20 @@ const create = async (req, res) => {
     })
 }
 
+const all = async (req, res) => {
+    const {Post} = await require('../Model');
+
+    Post.findAll()
+        .then(posts => {
+            console.log(posts);
+            res.status(200).json({posts: posts});
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({error: 'Something appears to have gone wrong'});
+        });
+}
+
 module.exports = {
-    create: create
+    create: create,
+    all: all
 }

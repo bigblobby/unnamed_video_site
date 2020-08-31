@@ -29,7 +29,11 @@ class PostCreatePage extends React.Component<{}, PostCreatePageState> {
             copy: this.state.text
         }).then(result => {
             console.log(result);
-            this.setState({ message: result.message });
+            this.setState({
+                title: '',
+                text: '',
+                message: result.message
+            });
         }).catch(err => {
             console.log(err);
         });
@@ -42,11 +46,11 @@ class PostCreatePage extends React.Component<{}, PostCreatePageState> {
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="post-title">Title</label>
-                            <input className="form-control" type="text" id="post-title" name="title" onChange={this.handleChange}/>
+                            <input className="form-control" type="text" id="post-title" name="title" value={this.state.title} onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="post-text">Text</label>
-                            <textarea className="form-control" id="post-text" name="text" rows={10} onChange={this.handleChange} />
+                            <textarea className="form-control" id="post-text" name="text" rows={10} value={this.state.text} onChange={this.handleChange} />
                         </div>
                         <button className="btn btn-primary" type="submit">Post</button>
                     </form>
